@@ -27,7 +27,17 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
-    - run: yarn install
-    - run: yarn build 
-    - run: yarn test
-    - run: yarn test:e2e
+    - name: Install
+      run: yarn install
+    - name: Build
+      run: yarn build 
+    - name: Unit test
+      run: yarn test
+    - name: Intgration test
+      run: yarn test:e2e
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        files: |
+          test-results/**/*.xml
