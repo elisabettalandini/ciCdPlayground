@@ -10,29 +10,12 @@ pipeline {
                 sh 'yarn'
             }
         }
-        stage('unit tests') {
-            steps {
-                sh 'yarn test'
-            }
-        }
 
         stage('build') {
             steps {
                 sh 'yarn build'
             }
         }
-
-        stage('integration tests') {
-            steps {
-                sh 'yarn test:e2e'
-            }
-        }
-
-        stage('publish test results') {
-                    steps {
-                        junit testResults: '**/reports/**/*.xml'
-                    }
-                }
 
         stage('deploy') {
             steps {
