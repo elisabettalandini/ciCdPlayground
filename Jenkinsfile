@@ -16,7 +16,7 @@ pipeline {
             }
             post {
                  always {
-                        junit testResults: '**/reports/**/*.xml'
+                        junit '**/reports/**/*.xml'
                  }
             }
         }
@@ -31,7 +31,7 @@ pipeline {
             }
             post {
                  always {
-                        junit testResults: '**/reports/**/*.xml'
+                        junit '**/reports/**/*.xml'
                  }
             }
         }
